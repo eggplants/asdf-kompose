@@ -11,13 +11,13 @@ asdf_kompose_fail() {
 asdf_kompose_download_wget() {
   local KOMPOSE_PACKAGE_OS_TYPE=$1
   # Download archive
-  wget -O "kompose-v${ASDF_INSTALL_VERSION}" "https://github.com/kubernetes/kompose/releases/download/v${ASDF_INSTALL_VERSION}/kompose-${KOMPOSE_PACKAGE_OS_TYPE}-amd64"
+  wget -O "kompose" "https://github.com/kubernetes/kompose/releases/download/v${ASDF_INSTALL_VERSION}/kompose-${KOMPOSE_PACKAGE_OS_TYPE}-amd64"
 }
 
 asdf_kompose_download_curl() {
   local KOMPOSE_PACKAGE_OS_TYPE=$1
   # Download archive
-  curl -sSL -o "kompose-v${ASDF_INSTALL_VERSION}" "https://github.com/kubernetes/kompose/releases/download/v${ASDF_INSTALL_VERSION}/kompose-${KOMPOSE_PACKAGE_OS_TYPE}-amd64"
+  curl -sSL -o "kompose" "https://github.com/kubernetes/kompose/releases/download/v${ASDF_INSTALL_VERSION}/kompose-${KOMPOSE_PACKAGE_OS_TYPE}-amd64"
 }
 
 asdf_kompose_download() {
@@ -59,7 +59,7 @@ asdf_kompose_install() {
   mkdir -p "$(dirname "${ASDF_INSTALL_PATH}")"
 
   # Finish the installation
-  mv "${ASDF_KOMPOSE_DIR}" "${ASDF_INSTALL_PATH}"
+  mv "${ASDF_KOMPOSE_DIR}" "${ASDF_INSTALL_PATH}/bin"
 }
 
 [ "${ASDF_INSTALL_TYPE}" == 'ref' ] && asdf_kompose_fail "This plugin does not support installing by ref."
