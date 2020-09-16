@@ -2,24 +2,22 @@
 
 # asdf-kompose ![Build](https://github.com/technikhil314/asdf-kompose/workflows/Build/badge.svg) ![Lint](https://github.com/technikhil314/asdf-kompose/workflows/Lint/badge.svg)
 
-[kompose](https://github.com/technikhil314/kompose) plugin for the [asdf version manager](https://asdf-vm.com).
+[kompose](https://github.com/kubernetes/kompose) plugin for the [asdf version manager](https://asdf-vm.com).
 
 </div>
 
-# Contents
+## Contents
 
 - [Dependencies](#dependencies)
 - [Install](#install)
-- [Why?](#why)
 - [Contributing](#contributing)
 - [License](#license)
 
-# Dependencies
+### Dependencies
 
-- `bash`, `curl`, `tar`: generic POSIX utilities.
-- `SOME_ENV_VAR`: set this environment variable in your shell config to load the correct version of tool x.
+- `bash` with `curl` or `wget`: generic POSIX utilities. Mostly installed already on linux, mac or any GNU POSIX OS
 
-# Install
+### Install
 
 Plugin:
 
@@ -48,12 +46,12 @@ kompose --help
 Check [asdf](https://github.com/asdf-vm/asdf) readme for more instructions on how to
 install & manage versions.
 
-# Contributing
+### Contributing
 
 Contributions of any kind welcome! See the [contributing guide](contributing.md).
 
 [Thanks goes to these contributors](https://github.com/technikhil314/asdf-kompose/graphs/contributors)!
 
-# License
+### License
 
 See [LICENSE](LICENSE) © [Nikhil Mehta](https://github.com/technikhil314/)
