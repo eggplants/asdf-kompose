@@ -56,6 +56,7 @@ asdf_kompose_install() {
 
   # Create parent directory, if necessary
   mkdir -p "$(dirname "${ASDF_INSTALL_PATH}/bin")"
+  ls -ltr .
   chmod 0755 ./kompose
   # Finish the installation
   mv "${ASDF_KOMPOSE_DIR}" "${ASDF_INSTALL_PATH}/bin"
