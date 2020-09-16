@@ -56,7 +56,7 @@ asdf_kompose_install() {
   fi
 
   # Create parent directory, if necessary
-  mkdir -p "$(dirname "${ASDF_INSTALL_PATH}")"
+  mkdir -p "$(dirname "${ASDF_INSTALL_PATH}/bin")"
 
   # Finish the installation
   mv "${ASDF_KOMPOSE_DIR}" "${ASDF_INSTALL_PATH}/bin"
