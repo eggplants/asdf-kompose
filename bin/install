@@ -31,7 +31,6 @@ asdf_kompose_download() {
   else
       echo "Unknown or unsupported OS type. Please raise a issue."
   fi
-
   if [ -x "$(which wget)" ]; then
     asdf_kompose_download_wget $KOMPOSE_PACKAGE_OS_TYPE
   else
@@ -43,7 +42,7 @@ asdf_kompose_download() {
 
 asdf_kompose_install() {
   local ASDF_KOMPOSE_DIR="$(mktemp -d -t asdf-kompose-XXXXXXX)"
-
+  echo "Installing kompose v${ASDF_INSTALL_VERSION} in ${ASDF_INSTALL_PATH}"
   (
     cd "${ASDF_KOMPOSE_DIR}"
 
