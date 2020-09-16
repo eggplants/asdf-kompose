@@ -1,6 +1,6 @@
 <div align="center">
 
-# asdf-kompose ![Build](https://github.com/technikhil314/asdf-kompose/workflows/Build/badge.svg) ![Lint](https://github.com/technikhil314/asdf-kompose/workflows/Lint/badge.svg)
+# asdf-kompose ![Build](https://github.com/technikhil314/asdf-kompose/workflows/main/badge.svg?branch=master)
 
 [kompose](https://github.com/kubernetes/kompose) plugin for the [asdf version manager](https://asdf-vm.com).
 
