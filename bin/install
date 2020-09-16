@@ -11,13 +11,13 @@ asdf_kompose_fail() {
 asdf_kompose_download_wget() {
   local KOMPOSE_PACKAGE_OS_TYPE=$1
   # Download archive
-  wget -O "kompose-v${ASDF_INSTALL_VERSION}.tar.gz" "https://github.com/kubernetes/kompose/releases/download/v${ASDF_INSTALL_VERSION}/kompose-${KOMPOSE_PACKAGE_OS_TYPE}-amd64"
+  wget -O "kompose-v${ASDF_INSTALL_VERSION}" "https://github.com/kubernetes/kompose/releases/download/v${ASDF_INSTALL_VERSION}/kompose-${KOMPOSE_PACKAGE_OS_TYPE}-amd64"
 }
 
 asdf_kompose_download_curl() {
   local KOMPOSE_PACKAGE_OS_TYPE=$1
   # Download archive
-  curl -sSL -o "kompose-v${ASDF_INSTALL_VERSION}.tar.gz" "https://github.com/kubernetes/kompose/releases/download/v${ASDF_INSTALL_VERSION}/kompose-${KOMPOSE_PACKAGE_OS_TYPE}-amd64"
+  curl -sSL -o "kompose-v${ASDF_INSTALL_VERSION}" "https://github.com/kubernetes/kompose/releases/download/v${ASDF_INSTALL_VERSION}/kompose-${KOMPOSE_PACKAGE_OS_TYPE}-amd64"
 }
 
 asdf_kompose_download() {
