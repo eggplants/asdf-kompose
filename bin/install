@@ -56,10 +56,10 @@ asdf_kompose_install() {
 
   # Create parent directory, if necessary
   mkdir -p "$(dirname "${ASDF_INSTALL_PATH}/bin")"
-  ls -ltr .
-  chmod 0755 ./kompose
+
   # Finish the installation
   mv "${ASDF_KOMPOSE_DIR}" "${ASDF_INSTALL_PATH}/bin"
+  chmod 0755 $ASDF_INSTALL_PATH/bin/kompose
 }
 
 [ "${ASDF_INSTALL_TYPE}" == 'ref' ] && asdf_kompose_fail "This plugin does not support installing by ref."
