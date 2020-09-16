@@ -3,10 +3,10 @@
 set -o nounset -o pipefail -o errexit
 IFS=$'\t\n'
 
-git ls-remote --refs --tags "https://github.com/kubernetes/kompose.git" \
-| sed -E 's|^.+refs/tags/||g' \
-| grep -E '^v' \
-| sort --version-sort \
-| sed -E 's|^v||g' \
-| grep -Ev '^0\.' \
-| xargs
+git ls-remote --refs --tags "https://github.com/kubernetes/kompose.git" |
+  sed -E 's|^.+refs/tags/||g' |
+  grep -E '^v' |
+  sort --version-sort |
+  sed -E 's|^v||g' |
+  grep -Ev '^0\.' |
+  xargs
