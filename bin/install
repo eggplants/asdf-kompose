@@ -41,7 +41,8 @@ asdf_kompose_download() {
 }
 
 asdf_kompose_install() {
-  local ASDF_KOMPOSE_DIR="$(mktemp -d -t asdf-kompose-XXXXXXX)"
+  local ASDF_KOMPOSE_DIR=""
+  ASDF_KOMPOSE_DIR="$(mktemp -d -t asdf-kompose-XXXXXXX)"
   echo "Installing kompose v${ASDF_INSTALL_VERSION} in ${ASDF_INSTALL_PATH}"
   (
     cd "${ASDF_KOMPOSE_DIR}"
@@ -59,12 +60,12 @@ asdf_kompose_install() {
 
   # Finish the installation
   mv "${ASDF_KOMPOSE_DIR}" "${ASDF_INSTALL_PATH}/bin"
-  chmod 0755 $ASDF_INSTALL_PATH/bin/kompose
+  chmod 0755 "$ASDF_INSTALL_PATH"/bin/kompose
 }
 
 [ "${ASDF_INSTALL_TYPE}" == 'ref' ] && asdf_kompose_fail "This plugin does not support installing by ref."
 [ -z "${ASDF_INSTALL_VERSION}" ] && asdf_kompose_fail "Unspecified install version."
 [ -z "${ASDF_INSTALL_PATH}" ] && asdf_kompose_fail "No installation directory was provided. Are you running this command via asdf? Try running 'asdf install kompose <version>'"
-[ -x "$(which wget)" -o -x "$(which curl)" ] || asdf_kompose_fail "Missing one of either of the following dependencies: wget, curl"
+[[ -x "$(which wget)" ]] || [[ -x "$(which curl)" ]] || asdf_kompose_fail "Missing one of either of the following dependencies: wget, curl"
 
-asdf_kompose_install $*
+asdf_kompose_install "$*"
