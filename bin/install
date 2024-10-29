@@ -8,16 +8,36 @@ asdf_kompose_fail() {
   exit 1
 }
 
+asdf_get_arch() {
+  local arch
+  arch="$(uname -m)"
+  case $arch in
+    amd64 | x86_64)
+      echo "amd64"
+      ;;
+    arm64)
+      echo "arm64"
+      ;;
+    aarch64)
+      echo "arm64"
+      ;;
+    *) 
+      echo ""
+  esac
+}
+
 asdf_kompose_download_wget() {
-  local KOMPOSE_PACKAGE_OS_TYPE=$1
+  local KOMPOSE_PACKAGE_OS_TYPE="$1"
+  local KOMPOSE_PACKAGE_ARCH="$2"
   # Download archive
-  wget -O "kompose" "https://github.com/kubernetes/kompose/releases/download/v${ASDF_INSTALL_VERSION}/kompose-${KOMPOSE_PACKAGE_OS_TYPE}-amd64"
+  wget -O "kompose" "https://github.com/kubernetes/kompose/releases/download/v${ASDF_INSTALL_VERSION}/kompose-${KOMPOSE_PACKAGE_OS_TYPE}-${KOMPOSE_PACKAGE_ARCH}"
 }
 
 asdf_kompose_download_curl() {
-  local KOMPOSE_PACKAGE_OS_TYPE=$1
+  local KOMPOSE_PACKAGE_OS_TYPE="$1"
+  local KOMPOSE_PACKAGE_ARCH="$2"
   # Download archive
-  curl -sSL -o "kompose" "https://github.com/kubernetes/kompose/releases/download/v${ASDF_INSTALL_VERSION}/kompose-${KOMPOSE_PACKAGE_OS_TYPE}-amd64"
+  curl -sSL -o "kompose" "https://github.com/kubernetes/kompose/releases/download/v${ASDF_INSTALL_VERSION}/kompose-${KOMPOSE_PACKAGE_OS_TYPE}-${KOMPOSE_PACKAGE_ARCH}"
 }
 
 asdf_kompose_download() {
@@ -29,13 +49,20 @@ asdf_kompose_download() {
   elif [[ "$OSTYPE" == "msys" || "$OSTYPE" == "win32" ]]; then
     KOMPOSE_PACKAGE_OS_TYPE="windows"
   else
-    echo "Unknown or unsupported OS type. Please raise a issue."
+    asdf_kompose_fail "Unknown or unsupported OS type. Please raise a issue."
   fi
+
+  local KOMPOSE_PACKAGE_ARCH
+  KOMPOSE_PACKAGE_ARCH="$(asdf_get_arch)"
+  if [[ -z "$KOMPOSE_PACKAGE_ARCH" ]]; then
+    asdf_kompose_fail "Unknown or unsupported architecture. Please raise a issue."
+  fi
+
   if [ -x "$(which wget)" ]; then
-    asdf_kompose_download_wget $KOMPOSE_PACKAGE_OS_TYPE
+    asdf_kompose_download_wget "$KOMPOSE_PACKAGE_OS_TYPE" "$KOMPOSE_PACKAGE_ARCH" 
   else
     if [ -x "$(which curl)" ]; then
-      asdf_kompose_download_curl $KOMPOSE_PACKAGE_OS_TYPE
+      asdf_kompose_download_curl "$KOMPOSE_PACKAGE_OS_TYPE" "$KOMPOSE_PACKAGE_ARCH"
     fi
   fi
 }
